@@ -8,30 +8,89 @@
     <link rel="stylesheet" href="style.css">
     <link href="https://cdn.jsdelivr.net/npm/froala-editor@latest/css/froala_editor.pkgd.min.css" rel="stylesheet"
         type="text/css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Michroma&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Stack+Sans+Notch:wght@200..700&display=swap" rel="stylesheet">
 
 </head>
 
 <body>
     <form action="/submit" method="POST">
-        <h3>Cadastre-se </h3>
+        <h2>Cadastre-se </h2>
         <div class="form-group">
-            <label for="nome">Nome: </label>
+
+            <!-- Nome -->
+            <label for="nome">
+                <h3>Nome: </h3>
+            </label>
             <input type="text" id="nome" name="nome" placeholder="Nome completo...">
         </div>
+
+        <!-- Data de nascimento -->
         <div class="form-group">
-            <label for="data_nascimento">Data de Nascimento: </label>
-            <input id="data_nascimento" name="data_nascimento" type="date">
+            <label for="data_nascimento">
+                <h3>Data de Nascimento:</h3>
+            </label>
+            <input id="data_nascimento" name="data_nascimento" type="date" max="2026-12-31" min="1900-01-01">
         </div>
+
+        <!-- Telefone -->
         <div class="form-group">
-            <label for="email">Email: </label>
-            <input type="email" id="email" name="email">
+            <label for="telefone">
+                <h3></h3>Telefone: </h3>
+            </label>
+            <input type="tel" id="telefone" name="telefone" placeholder="(XX) XXXXX-XXXX">
+
+            <!-- Máscara para o telefone
+             Pesquisei um pouco para fazer  -->
+            <script>
+                const telefoneInput = document.getElementById('telefone');
+
+                telefoneInput.addEventListener('input', (e) => {
+                    // Remove tudo que não é número
+                    let valor = e.target.value.replace(/\D/g, "");
+
+                    // Limita a quantidade máxima de caracteres para 11
+                    valor = valor.substring(0, 11);
+
+                    // Aplica a máscara dependendo da quantidade de números
+                    if (valor.length > 2) {
+                        valor = valor.replace(/^(\d{2})/, '($1) ');
+                    }
+                    if (valor.length > 7) {
+                        valor = valor.replace(/(\d{5})(\d{4})$/, '$1-$2');
+                    }
+
+                    // Atualiza o valor do input
+                    e.target.value = valor;
+                });
+            </script>
         </div>
+
+        <!-- Email -->
         <div class="form-group">
-            <label for="senha">Senha:</label>
+            <label for="email">
+                <h3>Email: </h3>
+            </label>
+            <input type="email" id="email" name="email" placeholder="exemplo@gmail.com">
+        </div>
+
+        <!-- Senha -->
+        <div class="form-group">
+            <label for="senha">
+                <h3>Senha:</h3>
+            </label>
             <input type="password" name="senha" id="senha">
         </div>
+
+        <!-- Habilidades -->
         <div class="form-group">
-            <label>Habilidades: </label>
+            <label>
+                <h3>Habilidades: </h3>
+            </label>
             <label for="html">
                 <input type="checkbox" id="html" name="habilidades" value="HTML">HTML
             </label>
@@ -41,12 +100,22 @@
             <label for="js">
                 <input type="checkbox" id="js" name="habilidades" value="JS">JavaScript
             </label>
+            <label for="py">
+                <input type="checkbox" id="py" name="habilidades" value="PY">Python
+            </label>
+            <label for="php">
+                <input type="checkbox" id="php" name="habilidades" value="PHP">PHP
+            </label>
         </div>
         <div class="form-group">
-            
+
         </div>
+
+        <!-- País -->
         <div class="form-group">
-            <label for="pais">País: </label>
+            <label for="pais">
+                <h3>País: </h3>
+            </label>
             <select id="pais" name="pais">
                 <option value="br">Brasil</option>
                 <option value="pt">Portugal</option>
@@ -55,14 +124,32 @@
                 <option value="ao">Angola</option>
             </select>
         </div>
+
+        <!-- Gênero -->
         <div class="form-group">
-            <label for="comentarios">Comentários: </label><br>
+
+            <h3>Gênero: </h3>
+            <input type="radio" id="masculino" name="genero" value="masculino">
+            <label for="masculino">Masculino</label>
+
+            <input type="radio" id="feminino" name="genero" value="feminino">
+            <label for="feminino">Feminino</label>
+
+            <input type="radio" id="outro" name="genero" value="outro">
+            <label for="outro">Outro</label>
+        </div>
+
+        <!-- Comentários -->
+        <div class="form-group">
+            <label for="comentarios">
+                <h3>Comentários: </h3>
+            </label><br>
             <textarea id="comentarios" name="comentarios"> </textarea>
         </div>
         <script type="text/javascript"
             src="https://cdn.jsdelivr.net/npm/froala-editor@latest/js/froala_editor.pkgd.min.js"></script>
-             <script>
-                new FroalaEditor("#comentarios");
+        <script>
+            new FroalaEditor("#comentarios");
         </script>
         <div class="form-group-submit">
             <button type="submit"> Enviar </button>
