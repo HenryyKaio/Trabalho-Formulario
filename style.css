@@ -19,38 +19,69 @@ body {
     padding: 0;
 }
 
+h2 {
+    font-family: "Michroma", sans-serif;
+    font-weight: 800;
+    font-size: 30px;
+    color: #d15b1c;
+    font-style: normal;
+}
+
 h3 {
-    font-size: 25px;
+    font-size: 24px;
+    color: #1453b8;
     font-weight: normal;
+    font-family: "Stack Sans Notch", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 350;
+    font-style: normal;
 }
 
 form {
     width: 500px;
-    height: 110vh;
+    height: 100%;
     float: right;
     /* desloca o formulário para a direita da página  */
     background-color: #ffffff;
     padding: 25px 50px 25px 50px;
 }
 
-form .form-group, .form-group-submit{
+form .form-group,
+.form-group-submit {
     margin-top: 15px;
 }
 
 /* Cria um estilo para os labels, menos os que tiverem a propriedade "for" com os valores abaixo */
-label:not([for="html"], [for="css"], [for="javascript"], [for="php"]) {
+label:not([for="html"], [for="css"], [for="js"], [for="py"], [for="php"], [for="masculino"], [for="feminino"], [for="outro"]) {
     display: block;
     margin-bottom: 8px;
 }
 
-[for="html"], [for="css"], [for="javascript"], [for="php"] {
-    margin-right: 25px;
+input[type="checkbox"],
+input[type="radio"] {
+    cursor: pointer;
+}
+
+label[for="comentarios"] {
+    margin-top: 30px;
+}
+
+[for="html"],
+[for="css"],
+[for="js"],
+[for="py"],
+[for="php"],
+[for="masculino"],
+[for="feminino"],
+[for="outro"] {
+    margin-right: 15px;
 }
 
 input[type="text"],
 input[type="date"],
 input[type="email"],
 input[type="password"],
+input[type="tel"],
 input[type="file"],
 select,
 textarea {
@@ -60,21 +91,23 @@ textarea {
     border: 1px solid #ccc;
     border-radius: 5px;
     box-sizing: border-box;
+
 }
 
 textarea {
     resize: vertical;
 }
 
-.form-group-submit button{
+.form-group-submit button {
     width: 100%;
     padding: 12px;
-    background-color:#e5633f;
+    background-color: #e5633f;
     color: white;
     border: none;
     border-radius: 5px;
     cursor: pointer;
     font-size: 16px;
+    transition: 325ms;
 }
 
 /* informa que o estilo do botão será alterado quando houver um evento de mouse sobre ele */
